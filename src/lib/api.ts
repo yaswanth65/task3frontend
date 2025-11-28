@@ -1,9 +1,12 @@
 /// <reference types="vite/client" />
 import axios from 'axios';
 
-// For production, VITE_API_URL should be set to the backend URL (e.g., https://your-backend.onrender.com/api)
-// For development, defaults to /api which proxies through Vite
-const API_URL = import.meta.env.VITE_API_URL || '/api';
+// Production backend URL
+const PRODUCTION_API_URL = 'https://task3backend-vpcq.onrender.com/api';
+
+// Use env variable if set, otherwise use production URL in prod or /api in dev
+const API_URL = import.meta.env.VITE_API_URL || 
+  (import.meta.env.PROD ? PRODUCTION_API_URL : '/api');
 
 console.log('API URL:', API_URL);
 

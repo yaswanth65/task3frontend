@@ -1,9 +1,12 @@
 /// <reference types="vite/client" />
 import { io, Socket } from 'socket.io-client';
 
-// For production, VITE_WS_URL should be set to the backend URL (e.g., https://your-backend.onrender.com)
-// For development, defaults to empty string (same origin)
-const WS_URL = import.meta.env.VITE_WS_URL || '';
+// Production backend URL for WebSocket
+const PRODUCTION_WS_URL = 'https://task3backend-vpcq.onrender.com';
+
+// Use env variable if set, otherwise use production URL in prod or same origin in dev
+const WS_URL = import.meta.env.VITE_WS_URL || 
+  (import.meta.env.PROD ? PRODUCTION_WS_URL : '');
 
 console.log('WebSocket URL:', WS_URL || '(same origin)');
 
